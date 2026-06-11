@@ -67,22 +67,19 @@ def find_file(*candidates):
     return None
 
 @st.cache_data
-def load_data():
-    stock_path = find_file(
-        'NIFTY50_all.csv',
-        'data/NIFTY50_all.csv',
-        'nifty50_d1/NIFTY50_all.csv',
-    )
-    meta_path = find_file(
-        'stock_metadata.csv',
-        'data/stock_metadata.csv',
-        'nifty50_d1/stock_metadata.csv',
-    )
-    if not stock_path or not meta_path:
-        st.error("❌ Data files not found. Please upload NIFTY50_all.csv and stock_metadata.csv to the repo's data/ folder.")
+def load_data(uploaded_file=None):
+    meta_path = find_file('stock_metadata.csv', 'data/stock_metadata.csv')
+    if not meta_path:
+        st.error("❌ stock_metadata.csv not found.")
         st.stop()
-    df   = pd.read_csv(stock_path,  parse_dates=['Date'])
     meta = pd.read_csv(meta_path)
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file, parse_dates=['Date'])
+    else:
+        stock_path = find_file('NIFTY50_all.csv', 'data/NIFTY50_all.csv')
+        if not stock_path:
+            return None, meta
+        df = pd.read_csv(stock_path, parse_dates=['Date'])
     df = df[df['Series'] == 'EQ'].copy()
     valid_symbols = meta['Symbol'].tolist()
     df = df[df['Symbol'].isin(valid_symbols)].copy()
@@ -225,14 +222,32 @@ def optimize_portfolio(returns_df, profile='balanced', n_sim=3000):
 # ─────────────────────────────────────────────
 # LOAD DATA
 # ─────────────────────────────────────────────
+# Check if NIFTY50_all.csv exists locally, else ask user to upload
+_stock_path = find_file('NIFTY50_all.csv', 'data/NIFTY50_all.csv')
+if _stock_path is None:
+    st.sidebar.markdown("## 📂 Upload Required")
+    uploaded_csv = st.sidebar.file_uploader(
+        "Upload NIFTY50_all.csv to begin",
+        type=['csv'],
+        help="File is too large for GitHub. Upload it here once."
+    )
+    if uploaded_csv is None:
+        st.title("📈 NIFTY-50 Investment Intelligence")
+        st.info("👈 Please upload **NIFTY50_all.csv** in the sidebar to start. You can find it inside archive(3).zip.")
+        st.stop()
+else:
+    uploaded_csv = None
+
 with st.spinner('Loading market data...'):
     try:
-        df, meta = load_data()
+        df, meta = load_data(uploaded_csv)
+        if df is None:
+            st.error("❌ Could not load stock data.")
+            st.stop()
         nifty_index, vix = load_index_data()
         DATA_LOADED = True
     except Exception as e:
         st.error(f"Could not load data: {e}")
-        st.info("Make sure NIFTY50_all.csv and stock_metadata.csv are in the same folder as app.py")
         DATA_LOADED = False
         st.stop()
 
