@@ -729,9 +729,10 @@ elif page == "⚠️ Risk Assessment":
 
         # Risk-return scatter
         st.markdown('<p class="section-header">Risk-Return Scatter</p>', unsafe_allow_html=True)
+        metrics['Sharpe_size'] = metrics['Sharpe'].clip(lower=0.1)
         fig_rr = px.scatter(
             metrics, x='Ann_Vol', y='Ann_Return',
-            color='Industry', size='Sharpe',
+            color='Industry', size='Sharpe_size',
             size_max=20, hover_data=['Symbol','Sharpe','Max_Drawdown'],
             template='plotly_dark', labels={
                 'Ann_Vol':'Annualized Volatility (%)',
