@@ -222,7 +222,7 @@ def optimize_portfolio(returns_df, profile='balanced', n_sim=3000):
 # ─────────────────────────────────────────────
 # LOAD DATA
 # ─────────────────────────────────────────────
-# Check if NIFTY50_all.csv exists locally, else ask user to upload
+# Check if NIFTY50_all.csv exists locally, else ask user to upload(as it was more than 25mb)
 _stock_path = find_file('NIFTY50_all.csv', 'data/NIFTY50_all.csv')
 if _stock_path is None:
     st.sidebar.markdown("## 📂 Upload Required")
