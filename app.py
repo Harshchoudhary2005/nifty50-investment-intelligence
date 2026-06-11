@@ -363,11 +363,11 @@ if page == "🏠 Market Overview":
 
     with col2:
         st.markdown('<p class="section-header">Top 10 All-Time Performers</p>', unsafe_allow_html=True)
-        def total_ret(g):
+        def total_ret(g, include_groups=False):
             g = g.sort_values('Date')
             if len(g) < 252: return np.nan
             return (g['Close'].iloc[-1]/g['Close'].iloc[0]-1)*100
-        tr = df.groupby('Symbol').apply(total_ret).dropna().sort_values(ascending=False).head(10)
+        tr = df.groupby('Symbol', group_keys=False).apply(total_ret).dropna().sort_values(ascending=False).head(10)
         fig3 = px.bar(
             x=tr.values, y=tr.index,
             orientation='h', template='plotly_dark',
@@ -903,7 +903,7 @@ elif page == "📊 Sector Analysis":
                 'Symbol': sym,
                 'Return': s.mean()*252*100,
                 'Volatility': s.std()*np.sqrt(252)*100,
-                'Sharpe': (s.mean()*252)/(s.std()*np.sqrt(252))
+                'Sharpe': (s.mean()*252)/(s.std()*np.sqrt(252)) if s.std() > 0 else 0
             })
         sec_m_df = pd.DataFrame(sec_metrics)
         fig_sm = px.scatter(sec_m_df, x='Volatility', y='Return',
