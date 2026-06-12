@@ -233,7 +233,7 @@ if _stock_path is None:
     )
     if uploaded_csv is None:
         st.title("📈 NIFTY-50 Investment Intelligence")
-        st.info("👈 Please upload **NIFTY50_all.csv** in the sidebar to start. You can find it inside archive(3).zip.")
+        st.info("👈 Please upload **NIFTY50_all.csv** in the sidebar to start. You can find it inside the NIFTY-50 Stock Market Data dataset on Kaggle.")
         st.stop()
 else:
     uploaded_csv = None
