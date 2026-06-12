@@ -1,112 +1,40 @@
 # 📈 NIFTY-50 Investment Intelligence Platform
 
-> **IIT Roorkee Finance Club — Open Projects 2026**  
+> **IIT Roorkee Finance Club — Open Projects 2026**
 > Data-Driven Investment Intelligence Using NIFTY-50 Market Data
+
+[![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20App-FF4B4B?logo=streamlit)](https://nifty50-intelligence.streamlit.app/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Dataset](https://img.shields.io/badge/Dataset-Kaggle-20BEFF?logo=kaggle)](https://www.kaggle.com/datasets/rohanrao/nifty50-stock-market-data)
 
 ---
 
 ## 🌐 Live Demo
-[👉 Click here to open the app](https://your-app-name.streamlit.app)  
-*(Replace with your Streamlit Cloud URL after deployment)*
+
+### 👉 [nifty50-intelligence.streamlit.app](https://nifty50-intelligence.streamlit.app/)
 
 ---
 
-## 📌 Project Overview
+## 📌 Overview
 
-An AI-powered investment intelligence platform built on 21 years of NIFTY-50 historical market data (Jan 2000 – Apr 2021). The platform transforms raw OHLCV data into actionable investment insights across six modules.
+An end-to-end AI-powered investment intelligence platform built on **21 years of NIFTY-50 historical market data** (Jan 2000 – Apr 2021). The platform transforms raw OHLCV data into actionable investment insights — covering stock prediction, portfolio optimisation, risk assessment, anomaly detection, and explainable AI.
 
-### Features
-| Module | Description |
+Built for the **IIT Roorkee Finance Club Open Projects 2026** competition.
+
+---
+
+## 🧩 Platform Modules
+
+| Module | What It Does |
 |---|---|
-| 🏠 Market Overview | NIFTY-50 index history, VIX, returns distribution, top performers |
-| 🔍 Stock Analysis | Candlestick charts, RSI, MACD, Bollinger Bands, buy/sell signals |
-| 💼 Portfolio Builder | Monte Carlo optimization for Conservative / Balanced / Aggressive profiles |
-| ⚠️ Risk Assessment | Sharpe, Sortino, Max Drawdown per stock and portfolio |
-| 🚨 Anomaly Detection | Z-score based market crash and volume spike detection |
-| 📊 Sector Analysis | Sector cumulative returns, correlation, seasonality |
-
----
-
-## 📁 Repository Structure
-
-```
-nifty50-investment-intelligence/
-│
-├── app.py                          # Streamlit web application
-├── requirements.txt                # Python dependencies
-├── README.md                       # This file
-│
-├── notebooks/
-│   ├── 01_eda_pipeline.ipynb       # Data loading, cleaning, EDA
-│   ├── 02_feature_engineering.ipynb
-│   ├── 03_predictor_model.ipynb
-│   ├── 04_portfolio.ipynb
-│   └── 05_risk_assessment.ipynb
-│
-└── data/
-    └── processed/                  # Saved after running notebooks
-        ├── master_clean.csv
-        ├── returns_wide.csv
-        ├── sector_stats.csv
-        └── metadata.csv
-```
-
----
-
-## 🗂️ Datasets Used
-
-1. **NIFTY-50 Stock Market Data**  
-   https://www.kaggle.com/datasets/rohanrao/nifty50-stock-market-data
-
-2. **India Stock Data NSE 1990–2020**  
-   https://www.kaggle.com/datasets/stoicstatic/india-stock-data-nse-1990-2020  
-   *(Used only for NIFTY-50 index benchmark and India VIX)*
-
----
-
-## ⚙️ Environment Setup
-
-### Option A — Run Locally
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/nifty50-investment-intelligence.git
-cd nifty50-investment-intelligence
-
-# 2. Create virtual environment
-python -m venv venv
-source venv/bin/activate        # Mac/Linux
-venv\Scripts\activate           # Windows
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Add data files to root directory
-# Place these files in the project root:
-#   - NIFTY50_all.csv
-#   - stock_metadata.csv
-#   - Datasets/INDEX/NIFTY 50.csv
-#   - Datasets/INDEX/INDIA VIX.csv
-
-# 5. Run the app
-streamlit run app.py
-```
-
-### Option B — Run on Google Colab
-
-Open any notebook in `notebooks/` directly in Google Colab.  
-Upload both dataset zips when prompted (first run only — then save to Google Drive).
-
----
-
-## 🚀 Deploying on Streamlit Cloud
-
-1. Push this repo to GitHub (must be public)
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect your GitHub account
-4. Select this repo → set `app.py` as the main file
-5. Add your data files via Streamlit Cloud file uploader or GitHub LFS
-6. Click **Deploy**
+| 📊 **EDA & Market Overview** | NIFTY-50 index history (1990–2021), India VIX, return distributions, sector performance, correlation heatmap |
+| 🔍 **Stock Analysis** | Candlestick charts, RSI, MACD, Bollinger Bands, ATR, Stochastic — per stock |
+| 🤖 **Stock Predictor Engine** | XGBoost + Random Forest trained on 48 technical features, directional accuracy, SHAP explainability |
+| 💼 **Portfolio Builder** | Monte Carlo efficient frontier, Conservative / Balanced / Aggressive / Risk Parity profiles |
+| ⚠️ **Risk Assessment** | Sharpe, Sortino, Max Drawdown, Calmar, VaR, CVaR, Beta — per stock and per portfolio |
+| 🚨 **Anomaly Detection** | Rolling Z-score based market crash and volume spike detection |
+| 💡 **Investment Signals** | Composite buy/sell signal scores with plain-English explanations for all 49 stocks |
 
 ---
 
@@ -117,11 +45,86 @@ Upload both dataset zips when prompted (first run only — then save to Google D
 | Stocks Analysed | 49 |
 | Date Range | 2000-01-03 → 2021-04-30 |
 | Total Records | 235,192 |
+| Features Engineered | 48 per stock (incl. India VIX) |
+| Best Model RMSE (XGBoost) | 0.027196 |
+| Avg Directional Accuracy | 50.34% |
 | Conservative Portfolio Sharpe | 0.15 |
 | Balanced Portfolio Sharpe | 0.93 |
 | Aggressive Portfolio Sharpe | 0.93 |
-| Anomaly Days Detected (2σ) | ~180 |
-| Market Crashes Identified | Dot-com, 2008 GFC, COVID-19 |
+| Best Stock Sharpe (SHREECEM) | 0.72 |
+| Systemic Anomaly Days Detected | 18 |
+| Market Crashes Identified | Dot-com (2000), GFC (2008), COVID-19 (2020) |
+
+---
+
+## 📁 Repository Structure
+
+```
+nifty50-investment-intelligence/
+│
+├── app.py                              # Streamlit web application
+├── requirements.txt                    # Python dependencies
+├── README.md                           # This file
+│
+├── notebooks/
+│   └── NIFTY50_Investment_Intelligence.ipynb   # Full analysis notebook (Colab-ready)
+│
+└── outputs/
+    ├── plots/                          # 18 generated charts
+    └── data/                           # CSV exports
+        ├── model_performance_all_stocks.csv
+        ├── risk_metrics_all_stocks.csv
+        ├── investment_signals.csv
+        ├── portfolio_conservative.csv
+        ├── portfolio_balanced.csv
+        ├── portfolio_aggressive.csv
+        └── portfolio_risk_parity.csv
+```
+
+---
+
+## 🗂️ Datasets
+
+| Dataset | Source | Usage |
+|---|---|---|
+| NIFTY-50 Stock Market Data | [Kaggle](https://www.kaggle.com/datasets/rohanrao/nifty50-stock-market-data) | 50 individual stock CSVs, 2000–2021 |
+| India Stock Data NSE 1990–2020 | [Kaggle](https://www.kaggle.com/datasets/stoicstatic/india-stock-data-nse-1990-2020) | NIFTY-50 index (1990–2021), India VIX, sector indices, G-Sec yield |
+
+> **Note:** Datasets are not included in this repo due to size. Download from the Kaggle links above and follow the setup instructions below.
+
+---
+
+## ⚙️ Setup & Reproduce Results
+
+### Option A — Google Colab (Recommended)
+
+1. Open `notebooks/NIFTY50_Investment_Intelligence.ipynb` in [Google Colab](https://colab.research.google.com)
+2. Upload both Kaggle zip files to `/content/` when prompted
+3. Run all cells top to bottom — takes ~10 minutes
+4. All outputs save to `/content/outputs/`
+
+### Option B — Run Locally
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/Harshchoudhary2005/nifty50-investment-intelligence.git
+cd nifty50-investment-intelligence
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate        # Mac/Linux
+venv\Scripts\activate           # Windows
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Place data files in project root:
+#    archive (3).zip  →  NIFTY-50 stock CSVs
+#    archive (4).zip  →  NSE index + SCRIP data
+
+# 5. Run the Streamlit app
+streamlit run app.py
+```
 
 ---
 
@@ -131,21 +134,38 @@ Upload both dataset zips when prompted (first run only — then save to Google D
 |---|---|
 | Language | Python 3.10+ |
 | Web App | Streamlit |
+| ML Models | XGBoost, Random Forest, LightGBM |
+| Explainability | SHAP |
+| Technical Indicators | `ta` library + custom |
+| Portfolio Optimisation | SciPy (SLSQP) + Monte Carlo |
+| Visualisations | Plotly, Matplotlib, Seaborn |
 | Data Processing | Pandas, NumPy |
-| Visualizations | Plotly, Matplotlib, Seaborn |
-| Portfolio Optimization | Monte Carlo Simulation |
-| Technical Indicators | Custom implementation |
-| Anomaly Detection | Rolling Z-Score |
-| Statistical Analysis | SciPy |
+| Statistical Analysis | SciPy, Statsmodels |
+
+---
+
+## 🔬 Methodology
+
+**Feature Engineering** — 48 features per stock including SMA/EMA (5/10/21/50/200), RSI, MACD, Bollinger Bands, ATR, Stochastic Oscillator, OBV, rolling volatility, momentum returns, and India VIX as a macro signal.
+
+**Prediction** — XGBoost and Random Forest trained on a strict time-series split (train: pre-2020, test: 2020–2021). No data leakage. Evaluated on RMSE, MAE, R², and Directional Accuracy.
+
+**Portfolio Optimisation** — Mean-Variance Optimisation via SciPy SLSQP with three objectives: minimum volatility (Conservative), maximum Sharpe (Balanced), and maximum return (Aggressive). Risk-free rate derived from NIFTY GS 10YR G-Sec yield.
+
+**Risk Metrics** — Sharpe Ratio, Sortino Ratio, Maximum Drawdown, Calmar Ratio, VaR (95%), CVaR (95%), Beta vs NIFTY-50 benchmark.
+
+**Anomaly Detection** — Rolling Z-score (window=21) on daily returns. Days exceeding 3σ flagged as anomalies. Cross-stock correlation used to identify systemic vs idiosyncratic events.
 
 ---
 
 ## 📄 License
-MIT License — free to use and modify.
+
+MIT License — free to use and modify with attribution.
 
 ---
 
 ## 👤 Author
-**Harsh Choudhary**  
-IIT Roorkee | Finance Club Open Projects 2026  
+
+**Harsh Choudhary**
+IIT Roorkee | Finance Club Open Projects 2026
 GitHub: [@Harshchoudhary2005](https://github.com/Harshchoudhary2005)
