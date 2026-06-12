@@ -83,7 +83,7 @@ nifty50-investment-intelligence/
 
 ---
 
-## 🗂️ Datasets
+## 🗂️ Datasets used 
 
 | Dataset | Source | Usage |
 |---|---|---|
