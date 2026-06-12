@@ -164,8 +164,13 @@ MIT License — free to use and modify with attribution.
 
 ---
 
-## 👤 Author
+## 👤 Authors
 
 **Harsh Choudhary**
 IIT Roorkee | Cult Council Open Projects 2026
 GitHub: [@Harshchoudhary2005](https://github.com/Harshchoudhary2005)
+
+**Harshith Sai Kumar**
+IIT Roorkee | Cult Council Open Projects 2026
+GitHub:[@HarshithsaiKumar076](https://github.com/HarshithsaiKumar076)
+
