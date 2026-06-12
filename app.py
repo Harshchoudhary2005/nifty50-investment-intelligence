@@ -222,7 +222,7 @@ def optimize_portfolio(returns_df, profile='balanced', n_sim=3000):
 # ─────────────────────────────────────────────
 # LOAD DATA
 # ─────────────────────────────────────────────
-# Check if NIFTY50_all.csv exists locally, else ask user to upload(as it was more than 25mb)
+# Check if NIFTY50_all.csv exists locally, else ask user to upload
 _stock_path = find_file('NIFTY50_all.csv', 'data/NIFTY50_all.csv')
 if _stock_path is None:
     st.sidebar.markdown("## 📂 Upload Required")
@@ -730,9 +730,10 @@ elif page == "⚠️ Risk Assessment":
         # Risk-return scatter
         st.markdown('<p class="section-header">Risk-Return Scatter</p>', unsafe_allow_html=True)
         metrics['Sharpe_size'] = metrics['Sharpe'].clip(lower=0.1)
-        fig_rr = px.scatter(
-            metrics, x='Ann_Vol', y='Ann_Return',
-            color='Industry', size='Sharpe_size',
+        metrics['Sharpe_size'] = metrics['Sharpe'].clip(lower=0.1)
+fig_rr = px.scatter(
+    metrics, x='Ann_Vol', y='Ann_Return',
+    color='Industry', size='Sharpe_size',
             size_max=20, hover_data=['Symbol','Sharpe','Max_Drawdown'],
             template='plotly_dark', labels={
                 'Ann_Vol':'Annualized Volatility (%)',
