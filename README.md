@@ -65,6 +65,7 @@ nifty50-investment-intelligence/
 ├── app.py                                      # Streamlit web application
 ├── requirements.txt                            # Python dependencies
 ├── README.md                                   # This file
+├── Technical_report_Nifty50.pdf                # Detailed technical report
 │
 ├── NIFTY50_Investment_Intelligence.ipynb       # Full analysis notebook (Colab-ready)
 │
@@ -158,19 +159,30 @@ streamlit run app.py
 
 ---
 
+## 📄 Technical Report
+
+A detailed technical report covering the full methodology, model architecture, evaluation results, and findings is available in this repository:
+
+### 📑 [Technical_report_Nifty50.pdf](./Technical_report_Nifty50.pdf)
+
+The report includes:
+- Detailed data preprocessing and feature engineering pipeline
+- Model selection, training, and hyperparameter tuning
+- Comprehensive evaluation metrics and comparisons across all 49 stocks
+- Portfolio optimisation results and efficient frontier analysis
+- Risk assessment breakdowns and anomaly detection findings
+- Limitations and future scope
+
+---
+
 ## 📄 License
 
 MIT License — free to use and modify with attribution.
 
 ---
 
-## 👤 Authors
+## 👤 Author
 
 **Harsh Choudhary**
 IIT Roorkee | Cult Council Open Projects 2026
 GitHub: [@Harshchoudhary2005](https://github.com/Harshchoudhary2005)
-
-**Harshith Sai Kumar**
-IIT Roorkee | Cult Council Open Projects 2026
-GitHub:[@HarshithsaiKumar076](https://github.com/HarshithsaiKumar076)
-
