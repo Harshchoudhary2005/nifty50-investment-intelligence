@@ -261,7 +261,7 @@ returns_wide = returns_wide.dropna(thresh=500, axis=1)
 # ─────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## 📈 NIFTY-50 Intelligence")
-    st.markdown("*IIT Roorkee Finance Club*")
+    st.markdown("*IIT Roorkee Cult Council*")
     st.markdown("---")
 
     page = st.radio("Navigation", [
