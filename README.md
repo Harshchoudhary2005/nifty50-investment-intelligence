@@ -62,16 +62,16 @@ Built for the **IIT Roorkee Finance Club Open Projects 2026** competition.
 ```
 nifty50-investment-intelligence/
 │
-├── app.py                              # Streamlit web application
-├── requirements.txt                    # Python dependencies
-├── README.md                           # This file
+├── app.py                                      # Streamlit web application
+├── requirements.txt                            # Python dependencies
+├── README.md                                   # This file
 │
-├── notebooks/
-│   └── NIFTY50_Investment_Intelligence.ipynb   # Full analysis notebook (Colab-ready)
+├── NIFTY50_Investment_Intelligence.ipynb       # Full analysis notebook (Colab-ready)
 │
-└── outputs/
-    ├── plots/                          # 18 generated charts
-    └── data/                           # CSV exports
+└── data/
+    ├── NIFTY50_all.csv                         # Combined dataset (all 50 stocks)
+    ├── stock_metadata.csv                      # Company name, sector, symbol
+    └── processed/                              # Generated after running notebook
         ├── model_performance_all_stocks.csv
         ├── risk_metrics_all_stocks.csv
         ├── investment_signals.csv
@@ -90,7 +90,7 @@ nifty50-investment-intelligence/
 | NIFTY-50 Stock Market Data | [Kaggle](https://www.kaggle.com/datasets/rohanrao/nifty50-stock-market-data) | 50 individual stock CSVs, 2000–2021 |
 | India Stock Data NSE 1990–2020 | [Kaggle](https://www.kaggle.com/datasets/stoicstatic/india-stock-data-nse-1990-2020) | NIFTY-50 index (1990–2021), India VIX, sector indices, G-Sec yield |
 
-> **Note:** Datasets are not included in this repo due to size. Download from the Kaggle links above and follow the setup instructions below.
+> **Note:** Raw zip files are not included due to size. Download from Kaggle and follow setup instructions below.
 
 ---
 
@@ -98,7 +98,7 @@ nifty50-investment-intelligence/
 
 ### Option A — Google Colab (Recommended)
 
-1. Open `notebooks/NIFTY50_Investment_Intelligence.ipynb` in [Google Colab](https://colab.research.google.com)
+1. Open `NIFTY50_Investment_Intelligence.ipynb` in [Google Colab](https://colab.research.google.com)
 2. Upload both Kaggle zip files to `/content/` when prompted
 3. Run all cells top to bottom — takes ~10 minutes
 4. All outputs save to `/content/outputs/`
@@ -118,7 +118,7 @@ venv\Scripts\activate           # Windows
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Place data files in project root:
+# 4. Place raw data zips in project root:
 #    archive (3).zip  →  NIFTY-50 stock CSVs
 #    archive (4).zip  →  NSE index + SCRIP data
 
@@ -136,8 +136,8 @@ streamlit run app.py
 | Web App | Streamlit |
 | ML Models | XGBoost, Random Forest, LightGBM |
 | Explainability | SHAP |
-| Technical Indicators | `ta` library + custom |
-| Portfolio Optimisation | SciPy (SLSQP) + Monte Carlo |
+| Technical Indicators | `ta` library + custom implementation |
+| Portfolio Optimisation | SciPy (SLSQP) + Monte Carlo Simulation |
 | Visualisations | Plotly, Matplotlib, Seaborn |
 | Data Processing | Pandas, NumPy |
 | Statistical Analysis | SciPy, Statsmodels |
