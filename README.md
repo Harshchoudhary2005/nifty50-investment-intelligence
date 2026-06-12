@@ -1,6 +1,6 @@
 # 📈 NIFTY-50 Investment Intelligence Platform
 
-> **IIT Roorkee Finance Club — Open Projects 2026**
+> **IIT Roorkee Cult Council — Open Projects 2026**
 > Data-Driven Investment Intelligence Using NIFTY-50 Market Data
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)](https://www.python.org/)
