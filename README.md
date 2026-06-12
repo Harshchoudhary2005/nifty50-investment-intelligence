@@ -20,7 +20,7 @@
 
 An end-to-end AI-powered investment intelligence platform built on **21 years of NIFTY-50 historical market data** (Jan 2000 – Apr 2021). The platform transforms raw OHLCV data into actionable investment insights — covering stock prediction, portfolio optimisation, risk assessment, anomaly detection, and explainable AI.
 
-Built for the **IIT Roorkee Finance Club Open Projects 2026** competition.
+Built for the **IIT Roorkee Cult Council Open Projects 2026** competition.
 
 ---
 
@@ -46,8 +46,8 @@ Built for the **IIT Roorkee Finance Club Open Projects 2026** competition.
 | Date Range | 2000-01-03 → 2021-04-30 |
 | Total Records | 235,192 |
 | Features Engineered | 48 per stock (incl. India VIX) |
-| Best Model RMSE (XGBoost) | 0.027196 |
-| Avg Directional Accuracy | 50.34% |
+| Best Model RMSE (XGBoost) | 0.052051 |
+| Avg Directional Accuracy | 50.72% |
 | Conservative Portfolio Sharpe | 0.15 |
 | Balanced Portfolio Sharpe | 0.93 |
 | Aggressive Portfolio Sharpe | 0.93 |
@@ -83,7 +83,7 @@ nifty50-investment-intelligence/
 
 ---
 
-## 🗂️ Datasets used 
+## 🗂️ Datasets
 
 | Dataset | Source | Usage |
 |---|---|---|
@@ -167,5 +167,5 @@ MIT License — free to use and modify with attribution.
 ## 👤 Author
 
 **Harsh Choudhary**
-IIT Roorkee | Finance Club Open Projects 2026
+IIT Roorkee | Cult Council Open Projects 2026
 GitHub: [@Harshchoudhary2005](https://github.com/Harshchoudhary2005)
